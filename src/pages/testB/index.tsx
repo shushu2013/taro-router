@@ -7,34 +7,27 @@ import './index.styl'
 
 // 使用 definePageConfig 定义的页面配置对象不能使用变量
 definePageConfig({
-  navigationBarTitleText: '首页',
+  navigationBarTitleText: '测试页面B',
 })
 
-export default class Index extends PureComponent<any, any> {
-  
-  handleGoTestA = () => {
-    Taro.navigateTo({
-      url: '/pages/testA/index'
-    })
-  }
-
+export default class TestB extends PureComponent<any, any> {
   handleGoBack = () => {
     Taro.navigateBack()
   }
 
   render() {
     return (
-      <View className="nutui-react-demo">
+      <View className="test-a">
         <View className="index">
-          首页
+          测试页面 B
         </View>
         <View className="index">
           <Button 
             type="primary" 
             className="btn"
-            onClick={this.handleGoTestA}
+            onClick={this.handleGoBack}
           >
-            测试页面 A
+            返回上一页
           </Button>
         </View>
       </View>
