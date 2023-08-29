@@ -1,16 +1,34 @@
 .test-b
+  position relative
   height 100%
-  display flex
-  flex-direction column
-  justify-content center
-  align-items center
+  box-sizing border-box
+  padding-top 90px
 
-  .index
+  .header
+    position absolute
+    top 10px
+    left 0
+    right 0
+    margin 0 14px
+    border 1px solid #eee
+    padding 14px
+    box-sizing border-box
+
+  .test-scroll-view
+    max-height 100%
+    border 1px solid #bbb
+    box-sizing border-box
+    overflow-y scroll
+
+  .list-item
+    height 200px
     display flex
-    justify-content center
+    justify-content space-around
     align-items center
     font-size 24rpx
-    margin-bottom 30px
+    margin 30px 14px
+    border 1px solid #eee
+    padding 14px
 
   .title
     display block

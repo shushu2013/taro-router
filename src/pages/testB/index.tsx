@@ -1,5 +1,4 @@
-import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { View, ScrollView } from '@tarojs/components'
 import React, { PureComponent } from 'react'
 import { Button } from "@nutui/nutui-react-taro"
 
@@ -11,39 +10,79 @@ definePageConfig({
 })
 
 export default class TestB extends PureComponent<any, any> {
-  handleGoBack = () => {
-    Taro.navigateBack()
+  state = {
+    list: [{}, {}, {}, {}, {}, {}, {}, {}],
+    scrollTop: 0,
   }
 
-  handleGoTestC = () => {
-    Taro.navigateTo({
-      url: '/shares/testC/index'
+  handleDeleteItem = index => {
+    const {
+      list
+    } = this.state
+
+    list.splice(index, 1)
+
+    this.setState({
+      list: [...list]
+    })
+  }
+
+  handleScrollToLower = () => {
+    const {
+      list
+    } = this.state
+
+    list.push({})
+
+    this.setState({
+      list: [...list]
     })
   }
 
   render() {
+    const {
+      list,
+      scrollTop,
+    } = this.state
+
     return (
       <View className="test-b">
-        <View className="index">
-          测试页面 B
+        <View className="header">
+          列表共计 {list.length} 项
         </View>
-        <View className="index">
-          <Button
-            type="primary"
-            className="btn"
-            onClick={this.handleGoTestC}
-          >
-            测试页面 C
-          </Button>
+        <ScrollView
+          className='test-scroll-view'
+          scrollY
+          scrollTop={scrollTop}
+          enableFlex
+          lowerThreshold={200}
+          showScrollbar={false}
+          scrollWithAnimation
+          onScrollToLower={this.handleScrollToLower}
+        >
+          {
+            list.map((item, index) => {
+              return (
+                <View
+                  className="list-item"
+                  key={index}
+                >
+                  第 {index + 1} 项
 
-          <Button
-            type="primary"
-            className="btn"
-            onClick={this.handleGoBack}
-          >
-            返回上一页
-          </Button>
-        </View>
+                  <Button
+                    type="primary"
+                    className="btn"
+                    onClick={() => {
+                      this.handleDeleteItem(index)
+                    }}
+                  >
+                    删除
+                  </Button>
+                </View>
+              )
+            })
+          }
+        </ScrollView>
       </View>
     )
   }
