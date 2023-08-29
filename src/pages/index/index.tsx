@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import React, { PureComponent } from 'react'
-import { Button } from "@nutui/nutui-react-taro"
+import { Swipe, Cell, Button } from '@nutui/nutui-react-taro'
 
 import './index.styl'
 
@@ -11,7 +11,7 @@ definePageConfig({
 })
 
 export default class Index extends PureComponent<any, any> {
-  
+
   handleGoTestA = () => {
     Taro.navigateTo({
       url: '/pages/testA/index'
@@ -28,14 +28,25 @@ export default class Index extends PureComponent<any, any> {
         <View className="index">
           首页
         </View>
-        <View className="index">
-          <Button 
-            type="primary" 
-            className="btn"
-            onClick={this.handleGoTestA}
+        <View className="swipe">
+          <Swipe
+            rightAction={
+              <Button
+                type="primary"
+                shape="square"
+                onClick={() => {
+                  Taro.showToast({
+                    title: '点击了删除'
+                  })
+                }}
+              >
+                删除
+              </Button>
+            }
           >
-            测试页面 A
-          </Button>
+            <Cell title="左滑删除" radius={0} />
+          </Swipe>
+
         </View>
       </View>
     )
