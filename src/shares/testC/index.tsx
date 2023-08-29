@@ -7,35 +7,21 @@ import './index.styl'
 
 // 使用 definePageConfig 定义的页面配置对象不能使用变量
 definePageConfig({
-  navigationBarTitleText: '测试页面B',
+  navigationBarTitleText: '测试页面C',
 })
 
-export default class TestB extends PureComponent<any, any> {
+export default class TestC extends PureComponent<any, any> {
   handleGoBack = () => {
     Taro.navigateBack()
   }
 
-  handleGoTestC = () => {
-    Taro.navigateTo({
-      url: '/shares/testC/index'
-    })
-  }
-
   render() {
     return (
-      <View className="test-b">
+      <View className="test-c">
         <View className="index">
-          测试页面 B
+          测试页面 C
         </View>
         <View className="index">
-          <Button
-            type="primary"
-            className="btn"
-            onClick={this.handleGoTestC}
-          >
-            测试页面 C
-          </Button>
-
           <Button
             type="primary"
             className="btn"

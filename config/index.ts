@@ -67,7 +67,14 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
-    }
+    },
+    router: {
+      mode: 'hash',
+      customRoutes: {
+        '/pages/testB/index': ['/testB/index'],
+        '/shares/testC/index': ['/testC/index']
+      },
+    },
   }
 }
 

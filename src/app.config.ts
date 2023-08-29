@@ -2,7 +2,8 @@ export default defineAppConfig({
   pages: [
     'pages/index/index',
     'pages/testA/index',
-    'pages/testB/index'
+    'pages/testB/index',
+    'shares/testC/index'
   ],
   window: {
     backgroundTextStyle: 'light',
